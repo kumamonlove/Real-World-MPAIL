@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,158 +12,587 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
+            background: #ffffff;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        /* Video Section - Full Width */
+        .video-section {
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            position: relative;
             overflow: hidden;
         }
 
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .video-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .video-container video {
+            min-width: 200%;
+            min-height: 200%;
+            width: 200%;
+            height: 200%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .video-overlay h1 {
+            font-size: clamp(2em, 5vw, 4.2em);
+            font-weight: 700;
             color: white;
-            padding: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             text-align: center;
+            padding: 0 40px;
+            user-select: none;
+            line-height: 1.2;
+            margin-bottom: 15px;
         }
 
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            font-size: 1.2em;
+        .video-overlay .subtitle {
+            font-size: clamp(1em, 2vw, 1.5em);
+            font-weight: 400;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-align: center;
             opacity: 0.9;
         }
 
-        main {
-            padding: 40px;
+        @media (max-width: 1200px) {
+            .video-overlay h1 {
+                font-size: clamp(1.5em, 4vw, 3.5em);
+            }
         }
 
-        section {
-            margin-bottom: 40px;
+        @media (max-width: 768px) {
+            .video-overlay h1 {
+                font-size: clamp(1.2em, 3.5vw, 2.5em);
+                padding: 0 20px;
+            }
         }
 
-        h2 {
-            color: #667eea;
+        @media (max-width: 480px) {
+            .video-overlay h1 {
+                font-size: clamp(1em, 3vw, 2em);
+                padding: 0 15px;
+            }
+        }
+
+        .video-placeholder {
+            text-align: center;
+            color: white;
+        }
+
+        .video-placeholder h1 {
+            font-size: 3.5em;
             margin-bottom: 20px;
-            font-size: 1.8em;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 10px;
+            font-weight: 300;
         }
 
-        p {
-            margin-bottom: 15px;
-            font-size: 1.1em;
+        .video-placeholder p {
+            font-size: 1.5em;
+            opacity: 0.9;
+        }
+
+        /* Container for content */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        /* Project Info Section */
+        .project-info {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .project-title {
+            font-size: 2.8em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .project-description {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.9;
+            margin-bottom: 40px;
             text-align: justify;
         }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .feature-card {
-            background: #f7f7f7;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-        }
-
-        .feature-card h3 {
-            color: #764ba2;
-            margin-bottom: 10px;
-        }
-
-        footer {
-            background: #f7f7f7;
-            padding: 20px;
+        /* Section Headers */
+        .section-header {
+            font-size: clamp(2em, 4vw, 3em);
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: 600;
             text-align: center;
-            color: #666;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: #667eea;
-            color: white;
+        .section-text {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.9;
+            margin-bottom: 40px;
+            text-align: justify;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            margin-bottom: 80px;
+        }
+
+        /* Solution Box */
+        .solution-box {
+            background: #ffffff;
+            color: #333;
+            padding: 50px;
+            border-radius: 12px;
+            margin-bottom: 80px;
+            border: 3px solid #667eea;
+        }
+
+        .solution-box h2 {
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            font-weight: 600;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .solution-box p {
+            font-size: 1.2em;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .solution-box img {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+        }
+
+        /* Tasks Section */
+        .tasks-section {
+            margin-bottom: 80px;
+        }
+
+        .video-controls {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .control-group label {
+            font-size: 1.1em;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .control-group select {
+            padding: 10px 20px;
+            font-size: 1em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            background: white;
+            color: #2c3e50;
+            cursor: pointer;
+            min-width: 200px;
+            transition: border-color 0.3s;
+        }
+
+        .control-group select:hover {
+            border-color: #764ba2;
+        }
+
+        .control-group select:focus {
+            outline: none;
+            border-color: #764ba2;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .time-display {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .time-display label {
+            font-size: 1.1em;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .time-display .time-value {
+            padding: 10px 15px;
+            font-size: 1em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #764ba2;
+            font-weight: 500;
+            background: #f0f0f5;
+            border: 2px solid #764ba2;
+            border-radius: 8px;
+            min-width: 150px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .task-note {
+            text-align: center;
+            font-size: 0.95em;
+            color: #777;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .video-display {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            aspect-ratio: 16 / 9;
+        }
+
+        .video-display video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 160%;
+            height: 160%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            display: block;
+        }
+
+
+        /* Links */
+        a {
+            color: #667eea;
             text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-            margin: 10px;
+            transition: color 0.3s;
         }
 
-        .btn:hover {
-            background: #764ba2;
+        a:hover {
+            color: #764ba2;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: #f5f5f5;
+            padding: 60px 40px 80px 40px;
+            margin: 80px 0 0 0;
+        }
+
+        .contact-section .section-header {
+            font-size: clamp(2em, 4vw, 3em);
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .contact-section h3 {
+            font-size: 1.5em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .contact-section p {
+            font-size: 1.1em;
+            color: #555;
+            text-align: center;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .contact-section .authors {
+            max-width: 800px;
+            margin: 30px auto;
+        }
+
+        .contact-section .author-info {
+            margin-bottom: 25px;
+        }
+
+        .contact-section .author-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .contact-section a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .contact-section a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-section .institution {
+            margin-top: 60px;
+            font-size: 0.95em;
+        }
+
+        .contact-section .institution strong {
+            font-weight: 700;
+        }
+
+        .contact-section .credits {
+            margin-top: 60px;
+            padding-top: 40px;
+            padding-left: 60px;
+            padding-right: 60px;
+            border-top: 1px solid #ddd;
+            font-size: clamp(0.9em, 1.5vw, 1em);
+            color: #777;
+            line-height: 1.6;
+        }
+
+        .contact-section .credits a {
+            color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .contact-section .credits {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
         }
     </style>
+    <script>
+        // 确保视频循环播放,提前8秒重新开始
+        document.addEventListener('DOMContentLoaded', function() {
+            var video = document.querySelector('video');
+            if (video) {
+                // 等待视频元数据加载完成
+                video.addEventListener('loadedmetadata', function() {
+                    console.log('Video duration:', this.duration);
+                });
+
+                video.addEventListener('timeupdate', function() {
+                    // 当视频剩余时间少于8秒时,重新开始播放
+                    if (this.duration && !isNaN(this.duration)) {
+                        var remaining = this.duration - this.currentTime;
+                        if (remaining <= 8 && remaining > 0) {
+                            console.log('Looping video, remaining:', remaining);
+                            this.currentTime = 0;
+                        }
+                    }
+                });
+
+                // 备用方案:如果视频结束了仍然立即重新播放
+                video.addEventListener('ended', function() {
+                    console.log('Video ended, restarting');
+                    this.currentTime = 0;
+                    this.play();
+                });
+            }
+        });
+    </script>
 </head>
 <body>
+    <!-- Video Section - Full Screen -->
+    <section class="video-section">
+        <div class="video-container">
+            <video autoplay muted loop playsinline>
+                <source src="Media/Per.mp4" type="video/mp4">
+                Your browser does not support video playback.
+            </video>
+        </div>
+        <div class="video-overlay">
+            <h1>Real-World Model Predictive Adversarial Imitation Learning</h1>
+            <p class="subtitle">Research in Progress</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
     <div class="container">
-        <header>
-            <h1>Real-World MPAIL</h1>
-            <p>真实世界中的多代理强化学习项目</p>
-        </header>
+        <!-- Project Info -->
+        <section class="project-info">
+            <h2 class="section-header">Summary</h2>
+            <p class="project-description">
+                Animals can imitate behaviors after only a few observations, whereas current machine learning methods require orders of magnitude more data. In this work, we directly train MPAIL in the real world by combining adversarial imitation learning with model predictive control (MPC). This approach learns robust, sample-efficient policies from only a few expert demonstrations, greatly lowering data collection costs and eliminating Sim-to-Real transfer issues.
+            </p>
+        </section>
 
-        <main>
-            <section>
-                <h2>项目简介</h2>
-                <p>
-                    欢迎来到 Real-World MPAIL 项目！这是一个专注于真实世界应用场景的多代理强化学习（Multi-Agent Reinforcement Learning）研究项目。
-                </p>
-                <p>
-                    本项目致力于探索和实现在复杂真实环境中的多智能体协作与学习算法，为实际应用提供可靠的解决方案。
-                </p>
-            </section>
+        <!-- Problem Section -->
+        <section class="problem-section">
+            <h2 class="section-header">Problem</h2>
+            <p class="section-text">
+                1. Prevailing imitation learning methods, such as Behavior Cloning, generally require large-scale, high-quality state–action demonstrations to achieve robust performance, which substantially increases the cost of data collection and expert supervision.
+            </p>
+            <p class="section-text">
+                2. For tasks in complex and dynamic environments, designing realistic and task-relevant simulation environments remains challenging, and policies trained purely in simulation often face significant obstacles in Sim-to-Real transfer.
+            </p>
+        </section>
 
-            <section>
-                <h2>主要特点</h2>
-                <div class="features">
-                    <div class="feature-card">
-                        <h3>🤖 多智能体协作</h3>
-                        <p>实现多个智能体之间的高效协作与通信机制</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>🌍 真实世界场景</h3>
-                        <p>针对实际应用场景进行算法设计与优化</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>🧠 强化学习</h3>
-                        <p>采用先进的强化学习算法和技术框架</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>📊 性能评估</h3>
-                        <p>完整的性能评估体系和可视化工具</p>
-                    </div>
+        <!-- Solution Box -->
+        <div class="solution-box">
+            <h2>Solution: Real-World Model Predictive Adversarial Imitation Learning</h2>
+            <p>
+                We propose the Real-World Model Predictive Adversarial Imitation Learning (MPAIL) framework, which integrates Adversarial Imitation Learning (AIL) with Model Predictive Control (MPC) for direct deployment on real robots. In this framework, a discriminator learns state-transition costs, and a value function provides terminal cost-to-go estimates; both are used by a Model Predictive Path Integral (MPPI) planner to optimize trajectories. Unlike policy-based imitation methods that rely on simulation and Sim-to-Real transfer, our framework learns directly from a small number of state-only demonstrations and real-world interactions, achieving sample-efficient, interpretable, and robust policies with improved generalization to out-of-distribution scenarios.
+            </p>
+            <img src="Media/solution-diagram.png" alt="MPAIL Architecture Diagram">
+        </div>
+
+        <!-- Tasks Section -->
+        <section class="tasks-section">
+            <h2 class="section-header">Tasks</h2>
+
+            <div class="video-controls">
+                <div class="control-group">
+                    <label for="task-select">Select Task:</label>
+                    <select id="task-select" onchange="updateVideo()">
+                        <option value="push">Push</option>
+                        <option value="pick-place" disabled>Pick and Place</option>
+                        <option value="pick-insert" disabled>Pick and Insert</option>
+                    </select>
                 </div>
-            </section>
 
-            <section>
-                <h2>快速开始</h2>
-                <p>
-                    项目正在开发中，更多内容即将更新...
-                </p>
-                <div style="text-align: center; margin-top: 30px;">
-                    <a href="https://github.com/kumamonlove/Real-World-MPAIL" class="btn">查看 GitHub 仓库</a>
+                <div class="control-group">
+                    <label for="step-select">Select Step:</label>
+                    <select id="step-select" onchange="updateVideo()">
+                        <option value="step1">Step 1</option>
+                        <option value="step20">Step 20</option>
+                    </select>
                 </div>
-            </section>
-        </main>
 
-        <footer>
-            <p>&copy; 2025 Real-World MPAIL Project. All rights reserved.</p>
-        </footer>
+                <div class="time-display">
+                    <label>Time Spent:</label>
+                    <div class="time-value" id="time-spent">0</div>
+                </div>
+            </div>
+
+            <p class="task-note">More tasks are being tested</p>
+
+            <div class="video-display">
+                <video id="task-video" controls loop>
+                    <source src="Media/Random.mp4" type="video/mp4">
+                    Your browser does not support video playback.
+                </video>
+            </div>
+        </section>
+
+    <script>
+        function updateVideo() {
+            const task = document.getElementById('task-select').value;
+            const step = document.getElementById('step-select').value;
+            const video = document.getElementById('task-video');
+            const timeSpent = document.getElementById('time-spent');
+
+            // 视频文件映射
+            const videoMap = {
+                'push-step1': 'Media/Random.mp4',
+                'push-step20': 'Media/Value Function.mp4',
+                'pick-place-step1': 'Media/Random.mp4',  // 临时使用同一视频
+                'pick-place-step20': 'Media/Value Function.mp4',
+                'pick-insert-step1': 'Media/Random.mp4',  // 临时使用同一视频
+                'pick-insert-step20': 'Media/Value Function.mp4'
+            };
+
+            // 时间映射
+            const timeMap = {
+                'push-step1': '0',
+                'push-step20': 'About 30 min',
+                'pick-place-step1': '0',
+                'pick-place-step20': 'About 30 min',
+                'pick-insert-step1': '0',
+                'pick-insert-step20': 'About 30 min'
+            };
+
+            const videoKey = `${task}-${step}`;
+            const videoPath = videoMap[videoKey] || 'Media/Random.mp4';
+            const timeValue = timeMap[videoKey] || '0';
+
+            // 更新视频源
+            video.src = videoPath;
+            video.load();
+
+            // 更新时间显示
+            timeSpent.textContent = timeValue;
+        }
+    </script>
     </div>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <h2 class="section-header">Contact & Inquiries</h2>
+        <h3>Get in Touch</h3>
+        <p>Have questions about Real-World MPAIL? Want to collaborate? We'd love to hear from you!</p>
+
+        <div class="authors">
+            <div class="author-info">
+                <p><span class="author-name">Tyler Han</span> - Lead Author<br>
+                <a href="mailto:than123@uw.edu">than123@uw.edu</a> | <a href="https://thanandnow.github.io/" target="_blank">Personal Website</a></p>
+            </div>
+
+            <div class="author-info">
+                <p><span class="author-name">Siyang Shen</span> - Lead Author<br>
+                <a href="mailto:andyshen@uw.edu">andyshen@uw.edu</a> | <a href="https://www.andyshensiyang.com" target="_blank">Personal Website</a></p>
+            </div>
+        </div>
+
+        <p class="institution"><strong>University of Washington</strong><br>
+        Paul G. Allen School of Computer Science & Engineering, Seattle, WA 98195</p>
+
+        <div class="credits">
+            <p>Website template modified from incredible Anycar, UMI-On-Legs, NeRFies, and Scaling Up Distilling Down.</p>
+            <p>This website is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</p>
+            <p>This means you are free to borrow and modify the source code of this website as long as you link back to the NeRFies page in the footer. Please remember to remove the analytics code included in the header of the website which you do not want on your website.</p>
+        </div>
+    </section>
+
 </body>
 </html>
