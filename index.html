@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real-World MPAIL</title>
@@ -412,35 +413,42 @@
         }
     </style>
     <script>
-        // 确保视频循环播放,提前8秒重新开始
         document.addEventListener('DOMContentLoaded', function() {
+
+            /* ====== PASSWORD PROTECTION ====== */
+            const PASSWORD = "private"; 
+            const input = prompt("This page is private. Please enter the password:");
+
+            if (input !== PASSWORD) {
+                document.body.innerHTML = "";
+                alert("Incorrect password.");
+                return;
+            }
+
+            /* ====== VIDEO LOOP CONTROL ====== */
             var video = document.querySelector('video');
             if (video) {
-                // 等待视频元数据加载完成
                 video.addEventListener('loadedmetadata', function() {
                     console.log('Video duration:', this.duration);
                 });
 
                 video.addEventListener('timeupdate', function() {
-                    // 当视频剩余时间少于8秒时,重新开始播放
                     if (this.duration && !isNaN(this.duration)) {
                         var remaining = this.duration - this.currentTime;
                         if (remaining <= 8 && remaining > 0) {
-                            console.log('Looping video, remaining:', remaining);
                             this.currentTime = 0;
                         }
                     }
                 });
 
-                // 备用方案:如果视频结束了仍然立即重新播放
                 video.addEventListener('ended', function() {
-                    console.log('Video ended, restarting');
                     this.currentTime = 0;
                     this.play();
                 });
             }
         });
     </script>
+
 </head>
 <body>
     <!-- Video Section - Full Screen -->
